@@ -1,7 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { SocialMeta } from "../components/SocialMeta";
-import { jobs, links } from "../content";
+import { jobs } from "../content";
 
 export default function IndexPage() {
   return (
@@ -9,16 +8,6 @@ export default function IndexPage() {
       <SocialMeta />
 
       <main>
-        <div className="pfp">
-          <Image
-            src="/avatar.jpg"
-            alt="Avatar photo is a self portrait of Sam King. Taken with an old Hasselblad film camera shooting into a mirror."
-            width={400}
-            height={400}
-            layout="responsive"
-          />
-        </div>
-
         <h1>Sam King</h1>
         <p className="subdued">he/him</p>
         <p>
@@ -27,17 +16,6 @@ export default function IndexPage() {
           available for new projects through{" "}
           <a href="https://samking.studio">samking.studio</a>
         </p>
-
-        <hr />
-
-        <h3>links</h3>
-        <ul>
-          {links.map((link) => (
-            <li key={link.href}>
-              <a href={link.href}>{link.text}</a>
-            </li>
-          ))}
-        </ul>
 
         <hr />
 
@@ -77,6 +55,10 @@ export default function IndexPage() {
             </li>
           ))}
         </ul>
+
+        <hr />
+
+        <a href="https://samking.co">elsewhere</a>
       </main>
     </>
   );
