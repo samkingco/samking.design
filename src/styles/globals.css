@@ -1,0 +1,303 @@
+@font-face {
+  font-family: "Text";
+  font-display: fallback;
+  src: url("fonts/Text.woff") format("woff"),
+    url("fonts/Text.woff2") format("woff2");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Text";
+  font-display: fallback;
+  src: url("fonts/TextBold.woff") format("woff"),
+    url("fonts/TextBold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Nikolai";
+  font-display: fallback;
+  src: url("fonts/Nikolai.woff") format("woff"),
+    url("fonts/Nikolai.woff2") format("woff2");
+  font-style: normal;
+  font-weight: bold;
+}
+
+:root {
+  --background: rgb(0, 0, 0);
+  --background-alpha: 0, 0, 0;
+  --foreground: rgb(255, 255, 255);
+  --foreground-alpha: 255, 255, 255;
+  --subdued: rgb(150 150 150);
+  --accent: rgb(245, 42, 42);
+
+  --font-sans: "Text", system, -apple-system, "Helvetica Neue", Helvetica,
+    "Segoe UI", Roboto, sans-serif;
+  --font-heading: "Nikolai", serif;
+}
+
+::selection {
+  background-color: var(--accent);
+  color: var(--background);
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  padding: 4em 1em;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--foreground);
+  background-color: var(--background);
+  cursor: crosshair;
+}
+
+@media (min-width: 30em) {
+  body {
+    padding: 6em 8vw;
+  }
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+  max-width: 30em;
+}
+
+h1 {
+  font-family: "Nikolai", serif;
+  font-size: 2em;
+  line-height: 1.2;
+}
+
+h1,
+h2,
+h2 + p {
+  margin-top: 0.5em;
+}
+
+h2,
+h3 {
+  font-size: 1em;
+  font-weight: normal;
+}
+
+h3 {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0 0 0 0.5em;
+}
+
+p + p {
+  margin-top: 0.5rem;
+}
+
+ul + h3 {
+  margin-top: 1em;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  color: var(--accent);
+  cursor: crosshair;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 16px; 
+  line-height: 1.5;
+  text-transform: none;
+  color: var(--foreground);
+  border: none;
+  background: none;
+  overflow: visible;
+  cursor: pointer;
+  text-decoration: none;
+  -webkit-appearance: button;
+}
+
+button:hover, button:focus-visible {
+  outline: none;
+  color: var(--accent);
+  cursor: crosshair;
+}
+
+hr {
+  border: none;
+  background: rgba(var(--foreground-alpha), 0.1);
+  width: 100%;
+  max-width: 4em;
+  height: 1px;
+  margin: 2em 0;
+}
+
+.subdued {
+  color: var(--subdued);
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+  display: inline-block;
+  margin-right: 1em;
+}
+
+.hidden {
+  color: transparent;
+}
+
+.pfp {
+  display: block;
+  max-width: 200px;
+  line-height: 0;
+  cursor: inherit;
+  position: relative;
+  z-index: 1;
+}
+
+.inverted {
+  --background: rgb(255, 255, 255);
+  --background-alpha: 255, 255, 255;
+  --foreground: rgb(0, 0, 0);
+  --foreground-alpha: 0, 0, 0;
+  --subdued: rgb(88 88 88);
+
+  color: var(--foreground);
+  background: var(--background);
+  padding: 1rem;
+  max-width: 30em;
+  margin: 2rem 0;
+}
+
+.project-images-wrapper {
+  max-width: 1400px;
+}
+
+.project-images {
+  position: relative;
+  height: 0;
+  padding-bottom: 64.28571429%;
+  overflow: hidden;
+  margin-top: 2rem;
+  border-radius: 0.25rem;
+}
+
+.project-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+.project-image-active {
+  opacity: 1;
+}
+
+.project-image-nav {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 1rem;
+  padding: 0 1rem;
+}
+
+.pagination {
+  display: flex;
+  gap: 6px;
+}
+
+.pagination-dot {
+  width: 4px;
+  height: 4px;
+  background: var(--foreground);
+  opacity: 0.24;
+  transition: opacity 150ms ease-in-out;
+  
+  /* Hide button text */
+  font-size: 0;
+  overflow: hidden;
+  color: transparent;
+}
+
+.pagination-dot-active {
+  opacity: 1;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: rgb(255, 255, 255);
+    --background-alpha: 255, 255, 255;
+    --foreground: rgb(0, 0, 0);
+    --foreground-alpha: 0, 0, 0;
+    --subdued: rgb(88 88 88);
+  }
+
+  ::selection {
+    color: var(--foreground);
+  }
+
+  .inverted {
+    --background: rgb(0, 0, 0);
+    --background-alpha: 0, 0, 0;
+    --foreground: rgb(255, 255, 255);
+    --foreground-alpha: 255, 255, 255;
+    --subdued: rgb(150 150 150);
+  }
+
+  .project-images:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    border-radius: 0.25rem;
+    box-shadow: inset 0 0 0 1px rgba(var(--foreground-alpha), 0.08);
+  }
+}
