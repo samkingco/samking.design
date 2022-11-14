@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { SocialMeta } from "../components/SocialMeta";
 import { jobs } from "../content";
@@ -8,18 +9,27 @@ export default function IndexPage() {
       <SocialMeta />
 
       <main>
+        <div className="pfp">
+          <picture className="pfp-main">
+            <Image
+              src="/avatar.jpg"
+              width="200"
+              height="200"
+              alt="Avatar photo is a self portrait of Sam King. Taken with an old Hasselblad film camera shooting into a mirror."
+            />
+          </picture>
+        </div>
         <h1>Sam King</h1>
-        <p className="subdued">he/him</p>
+        <p className="subdued mono">he/him</p>
         <p>
-          software design & engineering
-          <br />
           available for new projects through{" "}
-          <a href="https://samking.studio">samking.studio</a>
+          <a href="https://samking.studio">samking.studio</a>.<br />
+          find me online <a href="https://samking.co">elsewhere</a>.
         </p>
 
         <hr />
 
-        <h3>history</h3>
+        <h3 className="subdued mono">history</h3>
         <ul>
           {jobs.map((job) => (
             <li key={`${job.start}_${job.end || "present"}`}>
@@ -55,10 +65,6 @@ export default function IndexPage() {
             </li>
           ))}
         </ul>
-
-        <hr />
-
-        <a href="https://samking.co">elsewhere</a>
       </main>
     </>
   );

@@ -18,7 +18,7 @@ export default function Plain() {
           </Link>
         </p>
         <h1>Plain</h1>
-        <p className="subdued">Product Design and Design Systems</p>
+        <p className="subdued mono">Product Design and Design Systems</p>
         <p>
           Plain is a modern customer service tool. It&apos;s built around being
           fast and workflow driven, allowing businesses to spend more time

@@ -1,27 +1,27 @@
 @font-face {
   font-family: "Text";
   font-display: fallback;
-  src: url("fonts/Text.woff") format("woff"),
-    url("fonts/Text.woff2") format("woff2");
+  src: url("/fonts/Text.woff") format("woff"),
+    url("/fonts/Text.woff2") format("woff2");
   font-style: normal;
   font-weight: normal;
 }
 
 @font-face {
-  font-family: "Text";
+  font-family: "Mono";
   font-display: fallback;
-  src: url("fonts/TextBold.woff") format("woff"),
-    url("fonts/TextBold.woff2") format("woff2");
+  src: url("/fonts/Mono.woff") format("woff"),
+    url("/fonts/Mono.woff2") format("woff2");
   font-style: normal;
-  font-weight: bold;
+  font-weight: normal;
 }
 
 @font-face {
   font-family: "Nikolai";
   font-display: fallback;
-  src: url("fonts/Nikolai.woff") format("woff"),
-    url("fonts/Nikolai.woff2") format("woff2");
-  font-style: normal;
+  src: url("/fonts/Nikolai-Italic.woff") format("woff"),
+    url("/fonts/Nikolai-Italic.woff2") format("woff2");
+  font-style: italic;
   font-weight: bold;
 }
 
@@ -35,6 +35,8 @@
 
   --font-sans: "Text", system, -apple-system, "Helvetica Neue", Helvetica,
     "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Mono", SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono,
+    monospace;
   --font-heading: "Nikolai", serif;
 }
 
@@ -82,7 +84,7 @@ ul {
 }
 
 h1 {
-  font-family: "Nikolai", serif;
+  font-family: var(--font-heading);
   font-size: 2em;
   line-height: 1.2;
 }
@@ -126,11 +128,19 @@ img {
 
 a {
   color: inherit;
+  text-decoration-color: rgba(var(--foreground-alpha), 0.4);
+  transition: color 150ms ease, text-decoration-color 150ms ease;
 }
 
 a:hover {
   color: var(--accent);
+  text-decoration-color: var(--accent);
   cursor: crosshair;
+}
+
+a:focus-visible {
+  text-decoration-color: var(--foreground);
+  outline: none;
 }
 
 button,
@@ -140,7 +150,7 @@ button,
   padding: 0;
   margin: 0;
   font-family: var(--font-sans);
-  font-size: 16px; 
+  font-size: 16px;
   line-height: 1.5;
   text-transform: none;
   color: var(--foreground);
@@ -149,10 +159,10 @@ button,
   overflow: visible;
   cursor: pointer;
   text-decoration: none;
-  -webkit-appearance: button;
 }
 
-button:hover, button:focus-visible {
+button:hover,
+button:focus-visible {
   outline: none;
   color: var(--accent);
   cursor: crosshair;
@@ -179,6 +189,11 @@ hr {
 
 .hidden {
   color: transparent;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
 }
 
 .pfp {
@@ -251,7 +266,7 @@ hr {
   background: var(--foreground);
   opacity: 0.24;
   transition: opacity 150ms ease-in-out;
-  
+
   /* Hide button text */
   font-size: 0;
   overflow: hidden;
